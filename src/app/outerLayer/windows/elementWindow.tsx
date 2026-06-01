@@ -1,9 +1,10 @@
 import { DragWindow } from "@/src/components/dragWindow/dragWindow";
 import { Grid } from "@/src/components/grid";
+import { IWindowProp } from "./window.type";
 
-export function ElementWindow({ onClose }: { onClose: () => void }) {
+export function ElementWindow({ onClose, key }: IWindowProp) {
   return (
-    <DragWindow onClose={onClose} title="Elements">
+    <DragWindow key={key} onClose={onClose} title="Elements">
       <Grid>
         <div>
           <span>testeeeeeeeeeee</span>

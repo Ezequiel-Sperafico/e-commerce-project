@@ -8,7 +8,7 @@ import React, {
   MouseEvent as ReactMouseEvent,
   useContext,
 } from "react";
-import { EventContext } from "../../contexts/eventListenerBus";
+import { EventContext } from "../../contexts/globalEventListenerRegistry";
 import { WindowHeader } from "./windowHeader";
 import { ResizeButton } from "./resizeButton";
 
@@ -17,11 +17,13 @@ export function DragWindow({
   onClose,
   title,
   children,
+  key,
 }: {
   layer?: number;
   title: string;
   onClose: () => void;
   children?: React.ReactNode | React.ReactNode[];
+  key: string | number;
 }) {
   const [x, setX] = useState<number>(0);
   const [y, setY] = useState<number>(0);
@@ -116,6 +118,7 @@ export function DragWindow({
         boxShadow: "0px 1px 15px 1px #0000007d",
       }}
       className="fixed min-w-75 min-h-50 flex flex-col justify-between rounded-lg"
+      key={key}
     >
       <WindowHeader
         draggingStartEvent={draggingStartEvent}

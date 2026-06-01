@@ -8,7 +8,7 @@ import { Monitor, Redo2, Smartphone, Undo2 } from "lucide-react";
 import { useState } from "react";
 
 export function TopBar() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const [aspect, setAspect] = useState<"celphone" | "wide">("wide");
 

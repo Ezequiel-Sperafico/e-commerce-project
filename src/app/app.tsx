@@ -1,4 +1,4 @@
-import { EventExecutionQueueContext } from "../contexts/eventListenerBus";
+import { EventExecutionQueueContext } from "../contexts/globalEventListenerRegistry";
 import { SideBar } from "./outerLayer/menu/sideBar";
 import { TopBar } from "./outerLayer/menu/topBar";
 import { ElementWindow } from "./outerLayer/windows/elementWindow";
