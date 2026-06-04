@@ -1,4 +1,5 @@
 export interface IWindowProp {
+  layer: number;
+  onClick: () => void;
   onClose: () => void;
-  key: string | number;
 }

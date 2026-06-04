@@ -1,6 +1,7 @@
 "use client";
 import { CollapsableMenu } from "@/src/components/collapsableMenu";
 import { IconButton } from "@/src/components/iconButton";
+import { EEvent, outLayerObserver } from "@/src/contexts/communicationPipe";
 import {
   LayoutTemplate,
   PanelTop,
@@ -17,27 +18,47 @@ export function SideBar() {
     {
       label: "Element",
       icon: LayoutTemplate,
-      onClick: () => {},
+      onClick: () => {
+        outLayerObserver.dispatch(EEvent.WINDOW_TOGGLE, {
+          toggleWindow: "element",
+        });
+      },
     },
     {
       label: "Section",
       icon: Rows2,
-      onClick: () => {},
+      onClick: () => {
+        outLayerObserver.dispatch(EEvent.WINDOW_TOGGLE, {
+          toggleWindow: "section",
+        });
+      },
     },
     {
       label: "Page",
       icon: PanelTop,
-      onClick: () => {},
+      onClick: () => {
+        outLayerObserver.dispatch(EEvent.WINDOW_TOGGLE, {
+          toggleWindow: "page",
+        });
+      },
     },
     {
       label: "Theme",
       icon: SwatchBook,
-      onClick: () => {},
+      onClick: () => {
+        outLayerObserver.dispatch(EEvent.WINDOW_TOGGLE, {
+          toggleWindow: "theme",
+        });
+      },
     },
     {
       label: "Media",
       icon: Image,
-      onClick: () => {},
+      onClick: () => {
+        outLayerObserver.dispatch(EEvent.WINDOW_TOGGLE, {
+          toggleWindow: "media",
+        });
+      },
     },
   ];
 

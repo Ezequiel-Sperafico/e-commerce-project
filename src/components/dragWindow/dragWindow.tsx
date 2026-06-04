@@ -12,23 +12,38 @@ import { EventContext } from "../../contexts/globalEventListenerRegistry";
 import { WindowHeader } from "./windowHeader";
 import { ResizeButton } from "./resizeButton";
 
+export interface IDragWindowProps {
+  layer?: number;
+  title: string;
+  onClose: (args: {
+    width: number;
+    height: number;
+    x: number;
+    y: number;
+  }) => void;
+  onClick: () => void;
+  width?: number;
+  height?: number;
+  x?: number;
+  y?: number;
+  children?: React.ReactNode | React.ReactNode[];
+}
+
 export function DragWindow({
   layer = 1,
   onClose,
+  onClick,
   title,
   children,
-  key,
-}: {
-  layer?: number;
-  title: string;
-  onClose: () => void;
-  children?: React.ReactNode | React.ReactNode[];
-  key: string | number;
-}) {
-  const [x, setX] = useState<number>(0);
-  const [y, setY] = useState<number>(0);
-  const [width, setWidth] = useState<number>(350);
-  const [height, setHeight] = useState<number>(300);
+  width: initWidth = 300,
+  height: initHeight = 300,
+  x: initX = 50,
+  y: initY = 50,
+}: IDragWindowProps) {
+  const [x, setX] = useState<number>(initX);
+  const [y, setY] = useState<number>(initY);
+  const [width, setWidth] = useState<number>(initWidth);
+  const [height, setHeight] = useState<number>(initHeight);
   const [offsetX, setOffsetX] = useState<number>(0);
   const [offsetY, setOffsetY] = useState<number>(0);
   const dragging = useRef<boolean>(false);
@@ -114,16 +129,18 @@ export function DragWindow({
         left: `${x}px`,
         height: `${height}px`,
         width: `${width}px`,
-        zIndex: layer,
+        zIndex: layer + 1000,
         boxShadow: "0px 1px 15px 1px #0000007d",
       }}
       className="fixed min-w-75 min-h-50 flex flex-col justify-between rounded-lg"
-      key={key}
+      onMouseDown={onClick}
     >
       <WindowHeader
         draggingStartEvent={draggingStartEvent}
         draggingEndEvent={draggingEndEvent}
-        onClose={onClose}
+        onClose={() => {
+          onClose({ width, height, x, y });
+        }}
         title={title}
       />
       <div

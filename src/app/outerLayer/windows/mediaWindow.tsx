@@ -2,9 +2,9 @@ import { DragWindow } from "@/src/components/dragWindow/dragWindow";
 import { Grid } from "@/src/components/grid";
 import { IWindowProp } from "./window.type";
 
-export function MediaWindow({ onClose, key }: IWindowProp) {
+export function MediaWindow({ onClose, onClick, layer }: IWindowProp) {
   return (
-    <DragWindow key={key} onClose={onClose} title="Elements">
+    <DragWindow layer={layer} onClose={onClose} onClick={onClick} title="Media">
       <Grid>
         <div>
           <span>testeeeeeeeeeee</span>

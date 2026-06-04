@@ -2,9 +2,14 @@ import { DragWindow } from "@/src/components/dragWindow/dragWindow";
 import { Grid } from "@/src/components/grid";
 import { IWindowProp } from "./window.type";
 
-export function SectionWindow({ onClose, key }: IWindowProp) {
+export function SectionWindow({ onClose, onClick, layer }: IWindowProp) {
   return (
-    <DragWindow key={key} onClose={onClose} title="Elements">
+    <DragWindow
+      layer={layer}
+      onClose={onClose}
+      onClick={onClick}
+      title="Sections"
+    >
       <Grid>
         <div>
           <span>testeeeeeeeeeee</span>

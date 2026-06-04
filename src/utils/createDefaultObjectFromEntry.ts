@@ -4,10 +4,10 @@ interface IEntryData {
   [k: string]: unknown;
 }
 
-export function createDefaultObjectFromEntry<
-  E extends IEntryData,
-  D extends Exclude<any, Function>,
->(entry: E, defaultValue: D | (() => D)) {
+export function createDefaultObjectFromEntry<E extends IEntryData, D>(
+  entry: E,
+  defaultValue: D | (() => D),
+) {
   return Object.fromEntries(
     (Object.keys(entry) as (keyof E)[]).map((k) => [
       k,

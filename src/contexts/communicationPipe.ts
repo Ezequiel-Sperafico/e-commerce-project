@@ -24,7 +24,7 @@ type TSubscriberPipes = {
 
 type TCallback<T extends EEvent> = (args: TEventMetadataMap[T]) => void;
 
-let subscribers: TSubscriberPipes = createDefaultObjectFromEntry(EEvent, []);
+const subscribers: TSubscriberPipes = createDefaultObjectFromEntry(EEvent, []);
 
 Object.fromEntries(
   (Object.keys(EEvent) as (keyof typeof EEvent)[]).map((KEv) => [

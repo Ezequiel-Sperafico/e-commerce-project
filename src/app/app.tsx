@@ -1,7 +1,7 @@
 import { EventExecutionQueueContext } from "../contexts/globalEventListenerRegistry";
 import { SideBar } from "./outerLayer/menu/sideBar";
 import { TopBar } from "./outerLayer/menu/topBar";
-import { ElementWindow } from "./outerLayer/windows/elementWindow";
+import { WindowManager } from "./outerLayer/windows/windowManager";
 
 export function App() {
   return (
@@ -9,16 +9,7 @@ export function App() {
       <EventExecutionQueueContext>
         <SideBar />
         <TopBar />
-        <ElementWindow
-          onClose={async () => {
-            "use server";
-          }}
-        />
-        <ElementWindow
-          onClose={async () => {
-            "use server";
-          }}
-        />
+        <WindowManager />
       </EventExecutionQueueContext>
     </div>
   );

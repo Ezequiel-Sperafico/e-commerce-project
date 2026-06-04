@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3000",
-    "build": "pnpm eslint . && pnpm prettier --check --fix . && next build",
+    "build": "pnpm eslint . && pnpm prettier --check --write . && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check": "pnpm eslint . && pnpm prettier --check --write"
   },
   "dependencies": {
     "dayjs": "^1.11.20",
